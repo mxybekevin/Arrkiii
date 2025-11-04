@@ -7,30 +7,37 @@
 
 const config = require("./src/config");
 const { ClusterManager } = require("discord-hybrid-sharding");
-[
-  {
-    file: "./index.js",
-    token: config.token,
-    shards: 1,
-    perCluster: 1,
+
+// Bot configuration
+const client = {
+  file: "./index.js", // Path to your bot's main file
+  token: config.token, // Token from your config
+  shards: "auto", // Let the library decide shard count
+  perCluster: 1, // How many shards per cluster
+};
+
+// Create and configure the cluster manager
+const manager = new ClusterManager(client.file, {
+  restarts: {
+    max: 5, // Max restart attempts
+    interval: 1000, // Interval between restarts (ms)
   },
-].forEach((client) => {
-  new ClusterManager(client.file, {
-    restarts: {
-      max: 5,
-      interval: 1000,
-    },
-    respawn: true,
-    mode: "worker",
-    token: client.token,
-    totalShards: client.shards || "auto",
-    shardsPerClusters: parseInt(client.perCluster) || 2,
-  })
-    .on("shardCreate", (cluster) => {
-      console.log(`Launched cluster ${cluster.id}`);
-    })
-    .on("debug", (info) => {
-      console.log(`${info}`, "cluster");
-    })
-    .spawn({ timeout: -1 });
+  respawn: true, // Automatically respawn dead clusters
+  mode: "worker", // Recommended mode
+  token: client.token, // Bot token
+  totalShards: client.shards || "auto", // Total shards
+  shardsPerCluster: parseInt(client.perCluster) || 2, // Fixed property name
 });
+
+// Event: cluster created
+manager.on("clusterCreate", (cluster) => {
+  console.log(`✅ Launched cluster ${cluster.id}`);
+});
+
+// Event: debug info
+manager.on("debug", (info) => {
+  console.log(`[DEBUG] ${info}`);
+});
+
+// Spawn clusters
+manager.spawn({ timeout: -1 });
