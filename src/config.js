@@ -1,64 +1,59 @@
 /** @format */
 
+// Helper: safely parse boolean strings
+function parseBoolean(value) {
+  if (typeof value === "string") value = value.trim().toLowerCase();
+  return value === "true" || value === true;
+}
+
 module.exports = {
-  token:
-    "MTQzMDczNTY3MzQwMDIzNDAxNQ.G1-u9s.UG3DRsK6X8nsfF12Y2qHzQOVDa8wZ3d7aYw-8Y",
+  // ⚠️ Replace this token later!
+  token: "MTQzMDczNTY3MzQwMDIzNDAxNQ.GrdNlI.8b0H6U1eUuh-FSV97Zw1wWUok_u9g2xj3_uQ-k",
+
   clientId: "1430735673400234015",
   prefix: ">",
   ownerID: "1308227696400142417",
-  SpotifyID: "85aab1d51a174aad9eed6d7989f530e6",
-  SpotifySecret: "b2ad05aa725e434c88776a1be8eab6c2",
+
+  SpotifyID: "YOUR_SPOTIFY_ID",
+  SpotifySecret: "YOUR_SPOTIFY_SECRET",
+
   mongourl:
-    "mongodb+srv://codex-in2:codex-in2@codex-in2.gjv2c.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority",
+
   embedColor: "#2f3136",
-  logs: "https://discord.com/api/webhooks/1399187361694482462/--yD8NpadUuQJ2_XG8tfWRraU1MnDyRhtnpqr825pDo",
+  logs: "https://discord.com/api/webhooks/your-log-webhook",
+
   node_source: "ytsearch",
-  topgg:
-    "here",
+  topgg: "your-topgg-token",
+
   links: {
-    BG: "https://cdn.discordapp.com/attachments/1061636453437804544/1186002755924525166/20231217_232106.jpg",
-    support: "https://discord.gg/urV9mkfW9t",
+    BG: "https://cdn.discordapp.com/attachments/.../background.jpg",
+    support: "https://discord.gg/yourserver",
     invite:
-      "https://discord.com/api/oauth2/authorize?client_id=1399186967966519326&permissions=824671333721&scope=bot",
+      "https://discord.com/oauth2/authorize?client_id=1430735673400234015&permissions=8&scope=bot",
     arrkiii:
-      "https://cdn.discordapp.com/attachments/1187323477032697867/1236626903847407696/Arrkiii.gif",
+      "https://cdn.discordapp.com/attachments/.../Arrkiii.gif",
     power: "Powered By Arrkiii Development 🌙",
-    vanity: "discord.gg/urV9mkfW9t",
+    vanity: "discord.gg/yourserver",
     guild: "1325384856477368420",
-    topgg: "https://top.gg/bot/1033496708992204840/vote",
+    topgg: "https://top.gg/bot/1430735673400234015/vote",
   },
+
   Webhooks: {
-      black: "https://discord.com/api/webhooks/1399187361694482462/MtGa--yD8NpadUuQJ2_XG8tfWRraU1MnDyRhtnpqr825pDo",
-    player_create:
-      "https://discord.com/api/webhooks/1399187361694482462/MtGa--yD8NpadUuQJ2_XG8tfWRraU1MnDyRhtnpqr825pDo",
-    player_delete:
-      "https://discord.com/api/webhooks/1399187361694482462/MtGa--yD8NpadUuQJ2_XG8tfWRraU1MnDyRhtnpqr825pDo",
-    guild_join:
-      "https://discord.com/api/webhooks/1399187361694482462/MtGa--yD8NpadUuQJ2_XG8tfWRraU1MnDyRhtnpqr825pDo",
-      guild_leave: "https://discord.com/api/webhooks//MtGa--yD8NpadUuQJ2_XG8tfWRraU1MnDyRhtnpqr825pDo",
-    cmdrun:
- "https://discord.com/api/webhooks/1399187361694482462/MtGa--yD8NpadUuQJ2_XG8tfWRraU1MnDyRhtnpqr825pDo",
+    black: "https://discord.com/api/webhooks/your-webhook",
+    player_create: "https://discord.com/api/webhooks/your-webhook",
+    player_delete: "https://discord.com/api/webhooks/your-webhook",
+    guild_join: "https://discord.com/api/webhooks/your-webhook",
+    guild_leave: "https://discord.com/api/webhooks/your-webhook",
+    cmdrun: "https://discord.com/api/webhooks/your-webhook",
   },
 
   nodes: [
     {
-       url: process.env.NODE_URL || "lava-v4.ajieblogs.eu.org:443",
+      url: process.env.NODE_URL || "lava-v4.ajieblogs.eu.org:443",
       name: process.env.NODE_NAME || "Lavalink",
-      auth: process.env.NODE_AUTH || "https://dsc.gg/ajidevserver",
+      auth: process.env.NODE_AUTH || "yoursecret",
       secure: parseBoolean(process.env.NODE_SECURE || "true"),
     },
   ],
 };
-
-function parseBoolean(value) {
-  if (typeof value === "string") {
-    value = value.trim().toLowerCase();
-  }
-  switch (value) {
-    case true:
-    case "true":
-      return true;
-    default:
-      return false;
-  }
-}
