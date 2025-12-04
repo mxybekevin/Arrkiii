@@ -2,10 +2,10 @@
 
 module.exports = {
   token:
-    "MTM5OTE4Njk2Nzk2NjUxOTMyNg.GLDefb.-o",
-  clientId: "1399186967966519326",
+    "MTQzOTUyNzgyMTQ4MjM5MzY5MA.GbnEe7.neD0g34mKQLyUseYMzhWSGrobPBEqxd2I1ATTI",
+  clientId: "1439527821482393690",
   prefix: ">",
-  ownerID: "870179991462236170",
+  ownerID: "1308227696400142417",
   SpotifyID: "85aab1d51a174aad9eed6d7989f530e6",
   SpotifySecret: "b2ad05aa725e434c88776a1be8eab6c2",
   mongourl:
